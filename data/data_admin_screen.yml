@@ -1,0 +1,7 @@
+admin_tool:
+ email: admintest17@example.com
+ type: admin
+ email: admintest18@example.com
+ type: read-only
+ email: admintest18@example.com
+ type: read-write
