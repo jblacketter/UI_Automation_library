@@ -39,14 +39,14 @@ From here there are two ways to see available methods to interface with the UI
       @higgs.select_id('q_database_install')
 
 2. Use a predefined click. This is available as part of the page object under the page_elements/higgs module. You can start typing the word click to see the available definitions so far.
-
-  def click_machine_information
-  def click_install_type
-  def click_database_information
-  def click_console_information
-  def click_smtp_info
-  def click_misc
-
+```ruby
+ click_machine_information
+ click_install_type
+ click_database_information
+ click_console_information
+ click_smtp_info
+ click_misc
+```
 ### Next steps
 I will build out more definitions in the page object layer to support building tests in Higgs and PE dashboard. I have a number of tasks in Jira to refactor this to make it more robust, including adding a data driven capability.
 
