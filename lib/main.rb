@@ -4,6 +4,7 @@ require 'selenium-webdriver'
 require 'cucumber'
 require 'rspec'
 require 'yaml'
+require 'json-prettyprint'
 
 # core library
 require_relative '../lib/core.rb'
@@ -21,8 +22,6 @@ require_relative '../page_elements/higgs'
 # include Errors
 # include Wait
 # include Assertion
-# include Reports
-include DataHandlers
 
 ## Events
 include Higgs
@@ -31,8 +30,8 @@ include Higgs
 ## Utiltities
 include Reports
 include Utilities
+include DataHandlers
 # include TestData
-# include Dates
 
 
 

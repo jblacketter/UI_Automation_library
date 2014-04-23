@@ -1,0 +1,42 @@
+{
+"HiggsUI_form":
+    {
+        "machine_information":
+            [
+                {"q_puppetmaster_certname": ["certname","certname_2"]},
+                {"q_puppetmaster_dnsaltnames": ["dns_localhost","dns_localhost2"]},
+                {"q_puppetdb_hostname": ["db_locahost","db_localhost2"]},
+                {"q_puppetmaster_enterpriseconsole_hostname": ["console_locahost","console_localhost2"]}
+            ],
+
+        "database_information":
+            [
+                {"q_database_host": ["db_localhost","db_localhost2"]},
+                {"q_database_port": ["db_port","db_localhost2"]},
+                {"q_puppet_enterpriseconsole_database_name": ["console","console2"]},
+                {"q_puppet_enterpriseconsole_database_password_confirm": ["console","console2"]},
+                {"q_puppet_enterpriseconsole_database_password": ["console","console2"]},
+                {"q_puppetdb_database_password": ["console","console2"]},
+                {"q_puppetdb_database_password_confirm": ["console","console2"]}
+            ],
+
+        "console_information":
+            [
+                {"q_puppet_enterpriseconsole_auth_user_email": ["admin@example.com","admin@example2.com"]},
+                {"q_puppet_enterpriseconsole_auth_password": ["Puppet11","Puppet11"]},
+                {"q_puppet_enterpriseconsole_auth_password_confirm": ["Puppet11","Puppet11"]}
+            ],
+
+        "smtp_info":
+            [
+                {"q_puppet_enterpriseconsole_smtp_host": ["localhost","127.0.0.1"]},
+                {"q_puppet_enterpriseconsole_smtp_port": ["25","35"]},
+                {"q_puppet_enterpriseconsole_smtp_username": ["console","console2"]},
+                {"q_puppet_enterpriseconsole_smtp_password": ["Puppet11","Puppet11"]},
+                {"q_puppet_enterpriseconsole_smtp_password_confirm": ["Puppet11","Puppet11"]}
+            ]
+
+    }
+
+
+}
