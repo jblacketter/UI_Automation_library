@@ -13,6 +13,7 @@ require_relative '../lib/utilities.rb'
 require_relative '../lib/reports.rb'
 
 # application event library
+require_relative '../page_elements/common_events'
 require_relative '../page_elements/higgs'
 
 ## Common
@@ -25,6 +26,7 @@ require_relative '../page_elements/higgs'
 
 ## Events
 include Higgs
+include CommonEvents
 # include EventsDashboard
 
 ## Utiltities

@@ -1,0 +1,8 @@
+{ "HiggsUI_form":
+    [
+        ["certname", "dns_localhost", "db_locahost", "console_locahost", "db_localhost", "db_port", "console", "admin@example.com"],
+        ["certname2","dns_localhos2t","db_locahost2","console_locahost2","db_localhost2","db_port","console2","console2","admin@example2.com"],
+        ["certname3","dns_localhost3","db_locahost3","console_locahost3","db_localhost3","db_port","console3","console3","admin@example3.com","even_more"]
+    ]
+
+}

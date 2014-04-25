@@ -15,7 +15,7 @@ class Base
   def setup(hostname)
     # TODO : handle http and https url data
     @driver = Selenium::WebDriver.for :firefox
-    @base_url = 'http://' + hostname
+    @base_url = 'https://' + hostname
     @driver.get(@base_url)
     @driver.manage.timeouts.implicit_wait = 30
     @accept_next_alert = true
@@ -26,25 +26,6 @@ class Base
 
   def teardown
     @driver.quit
-  end
-
-  def login(username,password)
-      @username=username
-      @password=password
-    begin
-      enter_text('username',@username)
-      enter_text('password',@password)
-      select_id('submit_login')
-    rescue StandardError => error
-      puts error.message
-      take_screenshot
-      fail
-    end
-  end
-
-  def logout
-    select_link('admin')
-    select_link('Logout')
   end
 
 ###########################################################################################################################

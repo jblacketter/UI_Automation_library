@@ -1,6 +1,8 @@
 module PeConsole
 ## test page_elements for the PE admin page
 
+
+
   def add_users_and_roles(email_address,role)
     # add users in admin panel
     begin
