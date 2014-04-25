@@ -15,7 +15,7 @@ class Base
   def setup(hostname)
     # TODO : handle http and https url data
     @driver = Selenium::WebDriver.for :firefox
-    @base_url = 'https://' + hostname
+    @base_url = hostname
     @driver.get(@base_url)
     @driver.manage.timeouts.implicit_wait = 30
     @accept_next_alert = true
@@ -96,6 +96,17 @@ class Base
       fail
     end
   end
+
+#################################################################
+## validation test
+#################################################################
+
+  def is_displayed?(locator)
+
+   # @driver.find_element(test).displayed?.should == true
+  end
+
+
 
 end
 
