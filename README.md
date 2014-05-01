@@ -60,7 +60,7 @@ it 'login' do
     @dashboard.login('admin@example.com','Puppet1')
 end
 
-#this example calls the core methods to select  links passing in the name
+#### this example calls the core methods to select  links passing in the name
 ```ruby
 it 'Create a test_group' do
   @dashboard.select_link('Groups')
@@ -69,7 +69,7 @@ it 'Create a test_group' do
 end
 ```
 
-## This example does the same thing, but it uses a simpler convention where the clicks are predefined as part of the PEConsole page object layer. methods defined under page_elements/pe_console.rb
+#### This example does the same thing, but it uses a simpler convention where the clicks are predefined as part of the PEConsole page object layer. methods defined under page_elements/pe_console.rb
 ```ruby
 it 'Create a test group moved to page object module' do
   click_groups
@@ -78,7 +78,7 @@ it 'Create a test group moved to page object module' do
 end
 ```
 
-## these are some validation methods in selenium. rspec matchers can also be added but not included in this example
+#### these are some validation methods in selenium. rspec matchers can also be added but not included in this example
 ```ruby
   ## look for the current page title by text
     @dashboard.page_title_present?('Puppet Enterprise Console - Nodes')
@@ -91,7 +91,7 @@ end
     @dashboard.field_present?('password')
 ```
 
-## Then logout and teardown the instance
+#### Then logout and teardown the instance
 ```ruby
 it 'Logout and Shutdown' do
     @dashboard.logout
