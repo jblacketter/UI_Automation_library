@@ -2,7 +2,6 @@ require_relative '../lib/main.rb'
 
 module CommonEvents
 
-
   def login(username,password)
       @username=username
       @password=password

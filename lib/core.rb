@@ -13,7 +13,7 @@ class Base
 ###########################################################################################################################
 
   def setup(hostname)
-    # TODO : handle http and https url data
+    # TODO : get from yaml config
     @driver = Selenium::WebDriver.for :firefox
     @base_url = hostname
     @driver.get(@base_url)
@@ -66,7 +66,7 @@ class Base
   def select_button(name)
     begin
       @wait.until { @driver.find_element(:link, "#{name}").click }
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -77,7 +77,7 @@ class Base
     begin
       @wait.until { @driver.find_element(:css, "#{name}") }
       @driver.find_element(:css, "#{name}").click
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -90,7 +90,7 @@ class Base
       @wait.until { @driver.find_element(:id, "#{name}") }
       @driver.find_element(:id, "#{name}").clear
       @driver.find_element(:id, "#{name}").send_keys "#{text}"
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -98,14 +98,52 @@ class Base
   end
 
 #################################################################
-## validation test
+## validation
 #################################################################
 
-  def is_displayed?(locator)
-
-   # @driver.find_element(test).displayed?.should == true
+  def link_present?(locator)
+    begin
+      verify{ @driver.find_element(link: locator).displayed?.should }
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      puts error.message
+      take_screenshot
+      fail
+    end
   end
 
+  def field_present?(locator)
+    begin
+      verify{ @driver.find_element(name: locator).displayed?.should == true }
+    rescue StandardError => error
+      puts error.message
+      take_screenshot
+      fail
+    end
+  end
+
+  def element_present?(how, what)
+    begin
+      @driver.find_element(how, what)
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+      puts error.message
+      take_screenshot
+      fail
+    end
+  end
+
+  def is_displayed?(locator)
+     @driver.find_element(locator).displayed?.should == true
+  end
+
+  def page_title_present?(page_title)
+    @driver.title.should == page_title
+  end
+
+  def verify(&blk)
+    yield
+  rescue ExpectationNotMetError => ex
+    @verification_errors << ex
+  end
 
 
 end

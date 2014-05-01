@@ -12,9 +12,9 @@ describe 'Enter Higgs questions form' do
      @higgs.teardown
   end
 
-  it 'Get Higgs data' do
-    get_higgs_test_data_json('data/higgs_data.json')
-  end
+    it 'Get Higgs data' do
+      get_higgs_test_data_json('data/higgs_data.json')
+    end
 
     it 'Enter Install Type' do
       @higgs.select_id('q_all_in_one_install')
@@ -40,7 +40,7 @@ describe 'Enter Higgs questions form' do
       click_smtp_info
       form_fill_smtp_info
     end
-    #
+
     it 'Enter Misc' do
       click_misc
       @higgs.select_id('q_puppet_cloud_install')

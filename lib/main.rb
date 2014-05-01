@@ -5,6 +5,7 @@ require 'cucumber'
 require 'rspec'
 require 'yaml'
 require 'json-prettyprint'
+include RSpec::Expectations
 
 # core library
 require_relative '../lib/core.rb'
@@ -15,6 +16,7 @@ require_relative '../lib/reports.rb'
 # application event library
 require_relative '../page_elements/common_events'
 require_relative '../page_elements/higgs'
+require_relative '../page_elements/pe_console'
 
 ## Common
 # include Select
@@ -27,7 +29,7 @@ require_relative '../page_elements/higgs'
 ## Events
 include Higgs
 include CommonEvents
-# include EventsDashboard
+include PEConsole
 
 ## Utiltities
 include Reports
