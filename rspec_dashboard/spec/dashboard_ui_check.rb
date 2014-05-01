@@ -10,7 +10,7 @@ describe 'Login to Dashboard' do
   end
   
   after(:all) do
-    @dashboard.quit
+    @dashboard.teardown
   end
 
   it 'validate user name field is present' do

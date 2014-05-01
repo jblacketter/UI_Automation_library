@@ -81,7 +81,6 @@ class Base
       take_screenshot
       fail
     end
-
   end
 
   def enter_text(name,text)
@@ -112,7 +111,7 @@ class Base
 
   def field_present?(locator)
     begin
-      verify{ @driver.find_element(name: locator).displayed?.should == true }
+      verify{ @driver.find_element(name: locator).displayed?.should }
     rescue StandardError => error
       puts error.message
       take_screenshot
@@ -131,7 +130,7 @@ class Base
   end
 
   def is_displayed?(locator)
-     @driver.find_element(locator).displayed?.should == true
+    @driver.find_element(locator).displayed?.should
   end
 
   def page_title_present?(page_title)

@@ -10,7 +10,7 @@ describe 'Add and edit groups' do
   end
 
   after(:all) do
-    @dashboard.quit
+    @dashboard.teardown
   end
 
   it 'login' do
@@ -60,9 +60,9 @@ describe 'Add and edit groups' do
   #   @dashboard.click_id('submit_button')
   # end
 
-  # it 'logout' do
-  #   @dashboard.logout
-  # end
+  it 'logout' do
+    @dashboard.logout
+  end
 
 end
 
