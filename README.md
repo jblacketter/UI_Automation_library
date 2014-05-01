@@ -18,7 +18,9 @@ A sample of rspec tests are provided under rspec_higgs and rspec_dasbhoard. To r
 
 ### The layers
 - UI abstraction layer ** This is the lowest level library that provides a method for interfacing with the UI elements. Single methods for selecting links, Buttons, entering text, etc. This could also be thought of as the base object for a page object model
+  /lib files make up the UI abstraction. core.rb contains the base object.  Other core objects such as data reports and utilities are here as well
 - Page Objects ** The page objects describe elements of the UI that are re-usable and make sense to be wrapped in a reusable method. For example a navigation bar. It is also used to define single predefined clicks and are provided through modules specific to the application. This concept should be used sparingly and should not be used to simply describe every view or page
+  /page_elements contain the page objecs. common_events.rb contains methods used across all apps (currently dashboard and higgs)  application specific object are named accordingly for the app and objects contained
 - Test support modules ** Non test specific activities that support the test run. Reporting, data handling, time and string functions, etc.
 - The test runner ** Rspec is the default supported runner here. However other ruby based runners such as Cucumber or test unit could be used.
 

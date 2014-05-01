@@ -4,6 +4,9 @@ module Reports
 
   def test_run_results
     # unique folder for test run
+    # convert Time.now.strftime to string to create timestamped folder name as in RUN_042114_13:42:30
+    # folder name belongs to test run instance
+    # all run logs, errors, screenshots sent into this folder
   end
 
   def take_screenshot

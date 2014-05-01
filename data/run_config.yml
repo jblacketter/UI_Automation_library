@@ -1,0 +1,8 @@
+driver_setup:
+ browser:    @driver = Selenium::WebDriver.for :firefox
+ url: @driver.get(@base_url)
+ implicit_wait: @driver.manage.timeouts.implicit_wait = 30
+
+other_stuff:
+ base_url: @base_url = hostname
+ wait_until:  @wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
