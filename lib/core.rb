@@ -112,7 +112,7 @@ class Base
   def field_present?(locator)
     begin
       verify{ @driver.find_element(name: locator).displayed?.should }
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail

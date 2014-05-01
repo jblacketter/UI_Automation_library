@@ -9,10 +9,10 @@ A UI framework with libraries to interface with PE UI such as HIGGS and PE Dashb
 
 ### Running the sample rspec ##
 
-A sample of rspec tests are provided under rspec_higgs. To run them you must have a url to the  UI (TODO: The URL will be moved into a method that takes this as part of a config file. lines in Before all will be wrapped in a setup method)
+A sample of rspec tests are provided under rspec_higgs and rspec_dasbhoard. To run them you must have a url to the  UI (TODO: The URL will be moved into a method that takes this as part of a config file. lines in Before all will be wrapped in a setup method)
 
 1. Enter URL in higgs_spec.rb under before:all(do) This example is attached to the @higgs test run instance
-   @higgs.setup('127.0.0.1:9393')
+   @higgs.setup('http://127.0.0.1:9393')
 2. Execute the spec file from within rspec_higgs - rspec spec/higgs_spec.rb
 3. Optionally add additional configuration such as an html report of results  --format html --out reports.html
 
@@ -23,7 +23,7 @@ A sample of rspec tests are provided under rspec_higgs. To run them you must hav
 - The test runner ** Rspec is the default supported runner here. However other ruby based runners such as Cucumber or test unit could be used.
 
 ### Building a test
-
+ # this desription is based on the old higgs ui. will update when the new UI is available
 Following good conventions for rspec style (TODO: Collate references to rspec style guide and get team agreement on rspec conventions to describe tests) you can use the examples provided so far to build tests in higgs. Using and IDE of choice you should be able to see the available test calls using auto complete
 
 Example:
@@ -47,12 +47,55 @@ From here there are two ways to see available methods to interface with the UI
  click_smtp_info
  click_misc
 ```
-### Next steps
-I will build out more definitions in the page object layer to support building tests in Higgs and PE dashboard. I have a number of tasks in Jira to refactor this to make it more robust, including adding a data driven capability.
 
-Other activities include:
-- Documenting good style guides for describing rspec and rules for usage of the framework
-- Continue getting feedback from QA in code reviews and direct involvement to continually refactor framework to ensure that it is robust and meets the requirements of QA
-- Include existing tests and setup for dashboard refactored to use this framework
+### Building a test example id the PE dashboard
+
+(see the examples under rspec dashboard)
+
+Example:
+
+it 'login' do
+    @dashboard.login('admin@example.com','Puppet1')
+end
+
+#this example calls the core methods to select  links passing in the name
+```ruby
+it 'Create a test_group' do
+  @dashboard.select_link('Groups')
+  @dashboard.select_link('default')
+  @dashboard.select_link('mcollective')
+end
+```
+
+## This example does the same thing, but it uses a simpler convention where the clicks are predefined as part of the PEConsole page object layer. methods defined under page_elements/pe_console.rb
+```ruby
+it 'Create a test group moved to page object module' do
+  click_groups
+  click_default
+  click_mcollective
+end
+```
+
+## these are some validation methods in selenium. rspec matchers can also be added but not included in this example
+```ruby
+  ## look for the current page title by text
+    @dashboard.page_title_present?('Puppet Enterprise Console - Nodes')
+  ## look for the element present by passing in the name
+    @dashboard.element_present?(:link, 'Groups')
+    @dashboard.element_present?(:name, 'username')
+    @dashboard.element_present?(:body_tag, 'body')
+  ## simplify the lookup for a locator name. The method is described in the name and you just pass in the text which is usually the text visible on the page for a link or button
+    @dashboard.link_present?('Groups')
+    @dashboard.field_present?('password')
+```
+
+## Then logout and teardown the instance
+```ruby
+it 'Logout and Shutdown' do
+    @dashboard.logout
+    @dashboard.teardown
+end
+```
+
 
 
