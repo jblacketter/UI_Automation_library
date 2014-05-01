@@ -35,7 +35,7 @@ class Base
   def select_link(name)
     begin
       @wait.until { @driver.find_element(:link,"#{name}").click }
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -45,7 +45,7 @@ class Base
   def select_id(name)
     begin
       @wait.until { @driver.find_element(:id,"#{name}").click }
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -56,7 +56,7 @@ class Base
     # CLick an ID by name
     begin
       @wait.until { @driver.find_element(:xpath, "//button[@value='#{name}']").click }
-    rescue StandardError => error
+    rescue Selenium::WebDriver::Error::NoSuchElementError
       puts error.message
       take_screenshot
       fail
@@ -144,7 +144,6 @@ class Base
   rescue ExpectationNotMetError => ex
     @verification_errors << ex
   end
-
 
 end
 
