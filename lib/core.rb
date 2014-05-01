@@ -19,7 +19,6 @@ class Base
     @driver.get(@base_url)
     @driver.manage.timeouts.implicit_wait = 30
     @accept_next_alert = true
-    @driver.manage.timeouts.implicit_wait = 30
     @verification_errors = []
     @wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
   end
