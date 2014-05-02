@@ -6,16 +6,24 @@ describe 'Login to Dashboard' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://rf053vpab5s9os9')
+    @dashboard.setup('https://po71z56kc8841v9')
+    create_run_log
+    write_test_log('starting test')
   end
   
   after(:all) do
     @dashboard.teardown
+    write_test_log('ended the test')
+  end
+
+  it 'write to test log' do
+    p @dir_results + @dir_name
   end
 
   it 'validate user name field is present' do
     @dashboard.element_present?(:name, 'username')
     @dashboard.field_present?('username')
+
   end
 
   it 'validate body tag is present' do

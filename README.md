@@ -60,7 +60,7 @@ it 'login' do
     @dashboard.login('admin@example.com','Puppet1')
 end
 
-#### this example calls the core methods to select  links passing in the name
+#### This example calls the core methods to select links passing in the name
 ```ruby
 it 'Create a test_group' do
   @dashboard.select_link('Groups')
@@ -78,7 +78,7 @@ it 'Create a test group moved to page object module' do
 end
 ```
 
-#### these are some validation methods in selenium. rspec matchers can also be added but not included in this example
+#### Some validation methods in selenium. rspec matchers can also be added but not included in this example
 ```ruby
   ## look for the current page title by text
     @dashboard.page_title_present?('Puppet Enterprise Console - Nodes')

@@ -6,11 +6,14 @@ describe 'Add and edit groups' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://rf053vpab5s9os9')
+    @dashboard.setup('https://po71z56kc8841v9')
+    create_run_log
+    write_test_log('starting test')
   end
 
   after(:all) do
     @dashboard.teardown
+    write_test_log('ended the test')
   end
 
   it 'login' do
