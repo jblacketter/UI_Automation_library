@@ -26,6 +26,7 @@ module PEConsole
 
   #####################################################
   ### dashboard clicks
+  ### TODO: This example will be deprecated in favor of a metaprogramming method that will create this list of methods based on an attributes hash
   #####################################################
   def click_groups
     @dashboard.select_link('Groups')
@@ -45,18 +46,23 @@ module PEConsole
   def click_puppet_master
     @dashboard.select_link('puppet_master')
   end
+  def click_add_group
+    @dashboard.select_link('Add group')
+  end
+  def click_cancel
+    @dashboard.select_link('Cancel')
+  end
+  def click_button
+    @dashboard.select_button('Add variable')
+  end
 
-
-  # @dashboard.select_link('Add group')
-  # @dashboard.enter_text('node_group_name','Test Group '+ '@testString')
-  # @dashboard.enter_text('node_group_description','Test Node group description')
-  # @dashboard.enter_text('node_group_parameter_attributes_1_key','akey')
-  # @dashboard.enter_text('node_group_parameter_attributes_1_value','avalue')
-  # @dashboard.select_button('Add variable')
-  # @dashboard.select_button('Add variable')
-  # @dashboard.enter_text('node_class_autocomplete','adding a class')
-  # @dashboard.enter_text('node_group_autocomplete','adding a group')
-  # @dashboard.enter_text('node_autocomplete','adding a node')
-  # @dashboard.select_link('Cancel')
+  # # @dashboard.enter_text('node_group_name','Test Group '+ '@testString')
+  # # @dashboard.enter_text('node_group_description','Test Node group description')
+  # # @dashboard.enter_text('node_group_parameter_attributes_1_key','akey')
+  # # @dashboard.enter_text('node_group_parameter_attributes_1_value','avalue')
+  # # @dashboard.enter_text('node_class_autocomplete','adding a class')
+  # # @dashboard.enter_text('node_group_autocomplete','adding a group')
+  # # @dashboard.enter_text('node_autocomplete','adding a node')
+  # #
 
 end

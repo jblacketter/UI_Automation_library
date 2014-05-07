@@ -3,11 +3,11 @@ require_relative '../lib/main.rb'
 module Reports
 
   def initialize
-    @run_time = Time.now.strftime("%Y-%m-%d"+"_"+"%H-%M-%S")
+    @run_time = Time.now.strftime("%Y%m%d"+"_"+"%H%M%S")
     @dir_results = '/results/'
     @time_year = Time.now.strftime("%Y")
     @time_month = Time.now.strftime("%m")
-    @dir_name = Dir::pwd + @dir_results + @time_year + @time_month + "#{@run_time}"
+    @dir_name = Dir::pwd + @dir_results + "#{@run_time}"
     @log_name = "test_run#{@trun_time}.txt"
     @file_path = @dir_name + '/' + @log_name
   end
@@ -19,7 +19,6 @@ module Reports
 
   def create_error_log
     begin
-      #this does not compile
       # @error_log = Logger.new
       @error_log.level = Logger::DEBUG
     rescue
@@ -37,9 +36,7 @@ module Reports
   end
 
   def take_screenshot
-    # TODO: parse out the screenshot result string to handle location and type
-     @driver.take_screenshot "results/#{Time.now.strftime("fail__%d_%m_%Y__%H_%M_%S")}.png"
-     #@driver.save_screenshot("#{@dir_results}" + "#{@dir_name}") + "/screenshot.png"
+     @driver.save_screenshot("#{@dir_name}" + "/" + "#{Time.now.strftime("screen_shot__%H_%M_%S")}.png")
   end
 
 end # Reports_module

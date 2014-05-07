@@ -1,12 +1,10 @@
 require_relative '../../lib/main'
-require "rspec"
-include RSpec::Expectations
 
 describe 'Add and edit groups' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://po71z56kc8841v9')
+    @dashboard.setup('https://nx6cz9h7xj5bptw')
     create_run_log
     write_test_log('starting test')
   end
@@ -25,7 +23,7 @@ describe 'Add and edit groups' do
   end
 
   it 'Create a test_group' do
-    @dashboard.select_link('Groups')
+    @dashboard.select_link('Grorrups')
     @dashboard.select_link('default')
     @dashboard.select_link('mcollective')
     @dashboard.select_link('no mcollective')
@@ -55,13 +53,13 @@ describe 'Add and edit groups' do
     click_puppet_master
   end
 
-  # it "Edit and update the test group" do
-  #   @dashboard.select_link('Edit')
-  #   @dashboard.enter_text('node_group_parameter_attributes_1_key','akey')
-  #   @dashboard.enter_text('node_group_parameter_attributes_1_value','avalue')
-  #   @dashboard.select_button('Add variable')
-  #   @dashboard.click_id('submit_button')
-  # end
+  it 'Edit and update the test group' do
+    @dashboard.select_link('Edit')
+    @dashboard.enter_text('node_group_parameter_attributes_1_key','akey')
+    @dashboard.enter_text('node_group_parameter_attributes_1_value','avalue')
+    @dashboard.select_button('Add variable')
+    # @dashboard.select_button('submit_button')
+  end
 
   it 'logout' do
     @dashboard.logout

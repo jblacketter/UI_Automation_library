@@ -1,13 +1,7 @@
 require_relative '../lib/main.rb'
-require_relative '../page_elements/higgs'
 
 #  common contains the main class to handle UI elements
 class Base
-  include Higgs
-  def initialize
-
-  end
-
 ###########################################################################################################################
 ### Base object methods. The first level of abstraction over the UI
 ###########################################################################################################################
@@ -34,41 +28,37 @@ class Base
   def select_link(name)
     begin
       @wait.until { @driver.find_element(:link,"#{name}").click }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
-      fail
     end
+
   end
 
   def select_id(name)
     begin
       @wait.until { @driver.find_element(:id,"#{name}").click }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
-      fail
     end
   end
 
   def select_xpath(name)
-    # CLick an ID by name
     begin
       @wait.until { @driver.find_element(:xpath, "//button[@value='#{name}']").click }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
-      fail
     end
   end
 
   def select_button(name)
     begin
       @wait.until { @driver.find_element(:link, "#{name}").click }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
-      fail
     end
   end
 
@@ -76,7 +66,7 @@ class Base
     begin
       @wait.until { @driver.find_element(:css, "#{name}") }
       @driver.find_element(:css, "#{name}").click
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
       fail
@@ -88,7 +78,7 @@ class Base
       @wait.until { @driver.find_element(:id, "#{name}") }
       @driver.find_element(:id, "#{name}").clear
       @driver.find_element(:id, "#{name}").send_keys "#{text}"
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
       fail
@@ -102,7 +92,7 @@ class Base
   def link_present?(locator)
     begin
       verify{ @driver.find_element(link: locator).displayed?.should }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
       fail
@@ -112,7 +102,7 @@ class Base
   def field_present?(locator)
     begin
       verify{ @driver.find_element(name: locator).displayed?.should }
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
       fail
@@ -122,7 +112,7 @@ class Base
   def element_present?(how, what)
     begin
       @driver.find_element(how, what)
-    rescue Selenium::WebDriver::Error::NoSuchElementError
+    rescue StandardError => error
       puts error.message
       take_screenshot
       fail
@@ -130,11 +120,23 @@ class Base
   end
 
   def is_displayed?(locator)
-    @driver.find_element(locator).displayed?.should
+    begin
+      @driver.find_element(locator).displayed?.should
+    rescue StandardError => error
+      puts error.message
+      take_screenshot
+      fail
+    end
   end
 
   def page_title_present?(page_title)
-    @driver.title.should == page_title
+    begin
+      @driver.title.should == page_title
+    rescue StandardError => error
+      puts error.message
+      take_screenshot
+      fail
+    end
   end
 
   def verify(&blk)
@@ -144,5 +146,8 @@ class Base
   end
 
 end
+
+
+
 
 

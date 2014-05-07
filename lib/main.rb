@@ -18,7 +18,7 @@ require_relative '../page_elements/common_events'
 require_relative '../page_elements/higgs'
 require_relative '../page_elements/pe_console'
 
-## Common
+## Common page objects
 # include Select
 # include Toggle
 # include EnterText
@@ -26,7 +26,7 @@ require_relative '../page_elements/pe_console'
 # include Wait
 # include Assertion
 
-## Events
+## App specific page objects
 include Higgs
 include CommonEvents
 include PEConsole
