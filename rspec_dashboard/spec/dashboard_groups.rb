@@ -16,6 +16,7 @@ describe 'Add and edit groups' do
 
   it 'login' do
     @dashboard.login('admin@example.com','Puppet1')
+    write_test_log('logged in')
   end
 
   it 'validate link is present' do

@@ -11,10 +11,10 @@ class Base
     @driver = Selenium::WebDriver.for :firefox
     @base_url = hostname
     @driver.get(@base_url)
-    @driver.manage.timeouts.implicit_wait = 30
+    @driver.manage.timeouts.implicit_wait = 10
     @accept_next_alert = true
     @verification_errors = []
-    @wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
+    @wait = Selenium::WebDriver::Wait.new(:timeout => 2) # seconds
   end
 
   def teardown
@@ -29,10 +29,9 @@ class Base
     begin
       @wait.until { @driver.find_element(:link,"#{name}").click }
     rescue StandardError => error
-      puts error.message
       take_screenshot
+      fail
     end
-
   end
 
   def select_id(name)
@@ -41,6 +40,7 @@ class Base
     rescue StandardError => error
       puts error.message
       take_screenshot
+      fail
     end
   end
 
@@ -50,6 +50,7 @@ class Base
     rescue StandardError => error
       puts error.message
       take_screenshot
+      fail
     end
   end
 
@@ -59,6 +60,7 @@ class Base
     rescue StandardError => error
       puts error.message
       take_screenshot
+      fail
     end
   end
 
@@ -69,7 +71,7 @@ class Base
     rescue StandardError => error
       puts error.message
       take_screenshot
-      fail
+
     end
   end
 
@@ -93,6 +95,7 @@ class Base
     begin
       verify{ @driver.find_element(link: locator).displayed?.should }
     rescue StandardError => error
+      write_test_log(error.message)
       puts error.message
       take_screenshot
       fail

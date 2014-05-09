@@ -17,15 +17,6 @@ module Reports
     @test_run_log = File.open(@file_path, 'a+')
   end
 
-  def create_error_log
-    begin
-      # @error_log = Logger.new
-      @error_log.level = Logger::DEBUG
-    rescue
-      fail(msg="Cant create log report")
-    end
-  end
-
   def write_test_log(msg)
     begin
       @test_run_log = File.open(@test_run_log, 'a+')
@@ -34,6 +25,16 @@ module Reports
       fail(msg="Cant create log report")
     end
   end
+
+  ## TODO: create separate file in results for error log
+  # def create_error_log
+  #   begin
+  #     @error_log = Logger.new
+  #     @error_log.level = Logger::DEBUG
+  #   rescue
+  #     fail(msg="Cant create log report")
+  #   end
+  # end
 
   def take_screenshot
      @driver.save_screenshot("#{@dir_name}" + "/" + "#{Time.now.strftime("screen_shot__%H_%M_%S")}.png")
