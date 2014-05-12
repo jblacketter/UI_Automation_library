@@ -4,7 +4,7 @@ describe 'Login to Dashboard' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://nx6cz9h7xj5bptw')
+    @dashboard.setup('https://d0ov494fczm6a4z')
     create_run_log
     write_test_log('starting test')
   end

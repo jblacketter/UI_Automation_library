@@ -4,13 +4,13 @@ describe 'Add and edit groups' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://nx6cz9h7xj5bptw')
+    @dashboard.setup('https://d0ov494fczm6a4z')
     create_run_log
     write_test_log('starting test')
   end
 
   after(:all) do
-    @dashboard.teardown
+    # @dashboard.teardown
     write_test_log('ended the test')
   end
 
@@ -19,12 +19,9 @@ describe 'Add and edit groups' do
     write_test_log('logged in')
   end
 
-  it 'validate link is present' do
-    @dashboard.link_present?('Groups')
-  end
-
   it 'Create a test_group' do
-    @dashboard.select_link('Grorrups')
+    @dashboard.link_present?('Groups')
+    @dashboard.select_link('Groups')
     @dashboard.select_link('default')
     @dashboard.select_link('mcollective')
     @dashboard.select_link('no mcollective')
@@ -45,7 +42,7 @@ describe 'Add and edit groups' do
     # @dashboard.select_id('submit_button')
   end
 
-  it 'Create a test group moved to page object module' do
+   it 'Create a test group moved to page object module' do
     click_groups
     click_default
     click_mcollective
@@ -59,11 +56,13 @@ describe 'Add and edit groups' do
     @dashboard.enter_text('node_group_parameter_attributes_1_key','akey')
     @dashboard.enter_text('node_group_parameter_attributes_1_value','avalue')
     @dashboard.select_button('Add variable')
+    ## TODO : find reliable selection for submit / update button
     # @dashboard.select_button('submit_button')
   end
 
   it 'logout' do
     @dashboard.logout
+    @dashboard.select_id('dirtyFormWarningFollowLink')
   end
 
 end
