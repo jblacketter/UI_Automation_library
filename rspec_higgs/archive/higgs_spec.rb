@@ -4,7 +4,7 @@ describe 'Enter Higgs questions form' do
 
   before(:all) do
     @higgs = Base.new
-    @higgs.setup('127.0.0.1:9393')
+    @higgs.setup('http://bfywacntd32n15i.delivery.puppetlabs.net:3000/type')
     get_higgs_test_data_yaml('data/higgs_data.yml')
   end
   

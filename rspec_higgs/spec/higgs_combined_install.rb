@@ -11,15 +11,15 @@ describe "Higgs Walkthrough example" do
 
   after(:all) do
     write_test_log('Ending test run')
-    # @higgs.teardown
+    @higgs.teardown
   end
 
   describe 'Select Combined install' do
 
     it 'Enter form We need to know a few things' do
+      write_test_log('Fill combined install question form')
       @higgs.page_title_present?('Choose your deployment')
       @higgs.select_id('combined-description')
-      write_test_log('Fill out question form')
       @higgs.enter_text('master_hostname', 'master dns')
       @higgs.enter_text('master_alt_names', 'dns_alias')
       @higgs.enter_text('master_ssh_key', 'sshkey')
