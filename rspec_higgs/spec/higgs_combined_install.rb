@@ -4,7 +4,7 @@ describe "Higgs Walkthrough example" do
 
   before(:all) do
     @higgs = Base.new
-    @higgs.setup('http://bfywacntd32n15i.delivery.puppetlabs.net:3000/type')
+    @higgs.setup('http://bfywacntd32n15i.delivery.puppetlabs.net:3000')
     create_run_log
     write_test_log('Starting test run')
   end
@@ -18,6 +18,9 @@ describe "Higgs Walkthrough example" do
 
     it 'Enter form We need to know a few things' do
       write_test_log('Fill combined install question form')
+      @higgs.page_title_present?('Puppetlabs')
+      @higgs.link_present?('email the CEO.')
+      @higgs.select_link("Let's get started")
       @higgs.page_title_present?('Choose your deployment')
       @higgs.select_id('combined-description')
       @higgs.enter_text('master_hostname', 'master dns')
