@@ -11,39 +11,14 @@ describe "Higgs Walkthrough example" do
 
   after(:all) do
     write_test_log('Ending test run')
-    @higgs.teardown
+    # @higgs.teardown
   end
 
-  it 'Validate landing page title and elements OLD UI' do
-    ### default landing page
-    ## @higgs.page_title_present?('Puppetlabs')
-    # @higgs.link_present?('email the CEO.')
-
-    ### type landing page - temporary starting point until fix for Lets Begin button
-    @higgs.page_title_present?('Choose your deployment')
-  end
-
-
-  # it 'Select Lets Begin' do
-  ### TODO: waiting for new build that gives an id to xpath
-  ## @higgs.select_id("Let's begin")
-  # end
-
-  it 'Select Combined install' do
-    @higgs.select_id('combined-description')
-  end
-
-  describe 'Radio button check' do
-    ## TODO: these ids are recognized and the selection passes but they are not actually selected on screen.
-    it 'PuppetDB Select Postgress radio button' do
-      @higgs.select_id('database_use_existing')
-      @higgs.select_id('database_install_postgres')
-    end
-  end
-
-  describe 'Enter Form We need some information from you ' do
+  describe 'Select Combined install' do
 
     it 'Enter form We need to know a few things' do
+      @higgs.page_title_present?('Choose your deployment')
+      @higgs.select_id('combined-description')
       write_test_log('Fill out question form')
       @higgs.enter_text('master_hostname', 'master dns')
       @higgs.enter_text('master_alt_names', 'dns_alias')
@@ -84,15 +59,6 @@ describe "Higgs Walkthrough example" do
     end
 
   end
-
-  # describe 'Enter Email the ceo' do
-  #   # it 'Select Email The CEO' do
-  #   # element_present?(:link, "email the CEO.").should be_true
-  #   # higgs.select_link('email the CEO')
-  #   # end
-  # end
-
-
 
 end
 
