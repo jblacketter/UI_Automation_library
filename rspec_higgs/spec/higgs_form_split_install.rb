@@ -4,7 +4,8 @@ describe "Higgs Walkthrough example" do
 
   before(:all) do
     @higgs = Base.new
-    @higgs.setup('http://f3lpw9dku4xvrj7.delivery.puppetlabs.net:3000/')
+    get_test_run_yaml("data/higgs_run_config.yml")
+    @higgs.setup(@hostname)
     create_run_log
     write_test_log('Starting test run')
   end
