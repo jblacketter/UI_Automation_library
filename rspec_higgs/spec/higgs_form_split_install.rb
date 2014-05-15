@@ -48,7 +48,7 @@ describe "Higgs Walkthrough example" do
       @higgs.enter_text('smtp_password','smtpPassword')
     end
 
-    it 'Sumbmit and go back' do
+    it 'Submit and go back' do
       @higgs.select_id('smtp_more_options')
       @higgs.select_css('input.btn.btn-default')
       @higgs.select_link('Continue')
