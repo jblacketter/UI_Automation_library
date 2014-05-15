@@ -4,7 +4,7 @@ describe "Higgs Walkthrough example" do
 
   before(:all) do
     @higgs = Base.new
-    @higgs.setup('http://bfywacntd32n15i.delivery.puppetlabs.net:3000')
+    @higgs.setup('http://f3lpw9dku4xvrj7.delivery.puppetlabs.net:3000/')
     create_run_log
     write_test_log('Starting test run')
   end
@@ -14,7 +14,7 @@ describe "Higgs Walkthrough example" do
     @higgs.teardown
   end
 
-  describe 'Select Combined install' do
+  describe 'Select split install' do
 
     it 'Enter form We need to know a few things' do
       write_test_log('Fill combined install question form')
@@ -29,14 +29,13 @@ describe "Higgs Walkthrough example" do
       @higgs.enter_text('master_ssh_key_passphrase', 'ssh key passphrase')
       @higgs.enter_text('database_hostname', 'postgresql server dns name')
       @higgs.enter_text('database_port','8888')
-      @higgs.enter_text('puppetdb_database_user','pe-puppetdb_user')
+      @higgs.enter_text('puppetdb_database_username','pe-puppetdb_user')
       @higgs.enter_text('puppetdb_database_password','puppetDB Database password')
       @higgs.enter_text('console_database_name','console_database_name')
-      @higgs.enter_text('console_database_user', 'console database user')
-      @higgs.enter_text('console_database_user','console_database_user')
+      @higgs.enter_text('console_database_username', 'console database user')
       @higgs.enter_text('console_database_password','console_database_password')
-      @higgs.enter_text('console_auth_db_name','console authe database name')
-      @higgs.enter_text('console_auth_db_user','console authentication database user')
+      @higgs.enter_text('console_auth_db_name','console auth database name')
+      @higgs.enter_text('console_auth_db_username','console authentication database user')
       @higgs.enter_text('console_auth_db_password','console authentication database password')
       @higgs.enter_text('console_username','consolesuperuser@email.com')
       @higgs.enter_text('console_password','console_superuser_passphrase')
