@@ -7,14 +7,25 @@ class Base
 ###########################################################################################################################
 
   def setup(hostname)
-    # TODO : get from yaml config
     @driver = Selenium::WebDriver.for :firefox
     @base_url = hostname
     @driver.get(@base_url)
     @driver.manage.timeouts.implicit_wait = 10
     @accept_next_alert = true
     @verification_errors = []
-    @wait = Selenium::WebDriver::Wait.new(:timeout => 2) # seconds
+    @wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
+  end
+
+  def sauce_setup(hostname)
+      caps = Selenium::WebDriver::Remote::Capabilities.firefox
+      caps.platform = 'OS X 10.9'
+      caps.version = '28'
+      caps[:name] = "Test run higgs against sauce"
+
+      @driver = Selenium::WebDriver.for(
+          :remote,
+          :url => "http://QA-Team:2b127be8-d5c7-45f4-b257-f545b81a8a77@ondemand.saucelabs.com:80/wd/hub",
+          :desired_capabilities => caps)
   end
 
   def teardown
@@ -29,6 +40,7 @@ class Base
     begin
       @wait.until { @driver.find_element(:link,"#{name}").click }
     rescue StandardError => error
+      puts error.message
       take_screenshot
       fail
     end
@@ -85,6 +97,12 @@ class Base
       take_screenshot
       fail
     end
+  end
+
+  def move_to
+    #TODO a test for mouseover
+    @driver.action.move_to(@driver.find_element(:css, "html")).perform
+    @driver.action.move_to(@driver.find_element(:css, "#database_div > div.row > div.col-sm-6")).perform
   end
 
 #################################################################

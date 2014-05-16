@@ -4,7 +4,8 @@ describe 'Login to Dashboard' do
 
   before(:all) do
     @dashboard = Base.new
-    @dashboard.setup('https://d0ov494fczm6a4z')
+    get_test_run_yaml('data/dashboard_run_config.yml')
+    @dashboard.setup(@hostname)
     create_run_log
     write_test_log('starting test')
   end
