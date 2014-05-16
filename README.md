@@ -5,14 +5,17 @@ UI Automation framework for PE
 
 
 ### What is it? ##
-A UI framework with libraries to interface with PE UI such as HIGGS and PE Dashboard. Tests can be built on top of this and call the methods in this framework. Rspec is the default but Cucumber examples will also be provided
+A UI framework with libraries to interface with PE UI such as HIGGS and PE Dashboard. Tests can be built on top of this and call the methods in this framework. Rspec is the default but Cucumber examples are also included
 
 ### Running the sample rspec ##
 
-A sample of rspec tests are provided under rspec_higgs and rspec_dasbhoard. To run them you must have a url to the  UI (TODO: The URL will be moved into a method that takes this as part of a config file. lines in Before all will be wrapped in a setup method)
+A sample of rspec tests are provided under rspec_higgs and rspec_dasbhoard. To run them you must have a url to the  UI 
 
-1. Enter URL in higgs_spec.rb under before:all(do) This example is attached to the @higgs test run instance
-   @higgs.setup('http://127.0.0.1:9393')
+1. Open the run_config.yml file for your test. For example in Higgs data/higgs_run_config.yml and nter the default URL as the hostname.  
+```ruby
+   test_run_data:
+   hostname: http://f3lpw9dku4xvrj7.delivery.puppetlabs.net:3000
+```
 2. Execute the spec file from within rspec_higgs - rspec spec/higgs_spec.rb
 3. Optionally add additional configuration such as an html report of results  --format html --out reports.html
 
