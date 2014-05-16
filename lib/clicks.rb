@@ -1,22 +1,34 @@
-class ConsoleClicks
 
-  ## TODO: Experiment to build a list of test method clicks using metaprogramming
-  # define a class macro for setting features
-  def self.features(*args)
-    args.each do |feature|
-      # attr_accessor #{feature}"
-      # p feature
+class Post
+  def self.states(*args)
+    args.each do |arg|
+      define_method arg do
+        self.state = arg
+      end
     end
   end
 
-  # features
-  features :groups, :default, :mcollective, :puppet_console, :puppet_master
+  states :failure, :error, :success
+end
 
-  def click_test
-     p 'test'
+
+class Console
+
+  ## TODO: Experiment to build a list of test method clicks using metaprogramming
+  def self.click(*args)
+    args.each do |arg|
+      define_method arg do
+        self.click = arg
+      end
+    end
   end
 
+  click :groups, :default, :mcollective, :puppet_console, :puppet_master
+
+
 end
+
+p Console.click(:groups)
 
 
 # def click_groups
