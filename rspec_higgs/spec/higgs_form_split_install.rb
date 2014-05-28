@@ -17,6 +17,7 @@ describe "Higgs Walkthrough example" do
     @higgs.teardown
   end
 
+  ## TODO:  This example breaks the concept of DRY. Need to move resuable steps into helper module and call from tests.
   describe 'Select split install' do
 
     it 'Enter form We need to know a few things' do
