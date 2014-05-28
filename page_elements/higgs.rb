@@ -31,7 +31,7 @@ module Higgs
 
 ##############################################################################################
 ### experiment in filling out higgs form information from yaml data.
-### TODO: rework this to use json data
+### TODO: rework this to use json or xml data
 ##############################################################################################
   def form_fill_machine_information
     @higgs.enter_text('q_puppetmaster_certname',"#{@puppetmaster_certname}")
