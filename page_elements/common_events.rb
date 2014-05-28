@@ -27,4 +27,13 @@ module CommonEvents
     end
   end
 
+
+  #   def get_screen_data
+  #     require 'nokogiri'
+  #     require 'open-uri'
+  #     url = "https://dsfcipllex5f5vv.delivery.puppetlabs.net:3000/answers/masterdns.answers"
+  #     data = Nokogiri::HTML(open(url))
+  # #     puts data.at_css("#price").text.strip
+  #  end
+
 end

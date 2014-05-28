@@ -83,7 +83,7 @@ class Base
     rescue StandardError => error
       puts error.message
       take_screenshot
-
+      fail
     end
   end
 

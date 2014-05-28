@@ -22,8 +22,9 @@ module Reports
       @test_run_log = File.open(@test_run_log, 'a+')
       @test_run_log.puts(msg)
     rescue
-      fail(msg="Cant create log report")
-    end
+      fail
+    #   fail(msg="Cant create log report")
+     end
   end
 
   ## TODO: create separate file in results for error log
