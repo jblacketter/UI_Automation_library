@@ -16,7 +16,7 @@ require 'open-uri'
 
     after(:all) do
       write_test_log('Ending test run')
-      # @higgs.teardown
+      @higgs.teardown
     end
 
     describe 'Select Combined install' do
