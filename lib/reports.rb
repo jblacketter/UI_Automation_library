@@ -10,11 +10,16 @@ module Reports
     @dir_name = Dir::pwd + @dir_results + "#{@run_time}"
     @log_name = "test_run#{@trun_time}.txt"
     @file_path = @dir_name + '/' + @log_name
+
   end
 
   def create_run_log
-    Dir::mkdir(@dir_name) unless File.exists?(@dir_name)
-    @test_run_log = File.open(@file_path, 'a+')
+    begin
+      Dir::mkdir(@dir_name) #unless File.exists?(@dir_name)
+      @test_run_log = File.open(@file_path, 'a+')
+    rescue
+      fail(msg='cant create run log')
+    end
   end
 
   def write_test_log(msg)
@@ -22,8 +27,7 @@ module Reports
       @test_run_log = File.open(@test_run_log, 'a+')
       @test_run_log.puts(msg)
     rescue
-      fail
-    #   fail(msg="Cant create log report")
+      fail(msg="Cant create log report")
      end
   end
 

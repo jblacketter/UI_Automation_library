@@ -1,10 +1,14 @@
 ## require gems
+require 'rubygems'
 require 'json'
 require 'selenium-webdriver'
 require 'cucumber'
 require 'rspec'
 require 'yaml'
 require 'json-prettyprint'
+require 'net/ssh'
+require 'optparse'
+require 'open-uri'
 include RSpec::Expectations
 
 # core library
