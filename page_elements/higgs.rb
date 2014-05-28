@@ -34,10 +34,18 @@ module Higgs
 ### TODO: rework this to use json or xml data
 ##############################################################################################
   def form_fill_machine_information
-    @higgs.enter_text('q_puppetmaster_certname',"#{@puppetmaster_certname}")
-    @higgs.enter_text('q_puppetmaster_dnsaltnames',"#{@puppetmaster_dnsaltnames}")
-    @higgs.enter_text('q_puppetdb_hostname',"#{@puppetdb_hostname}")
-    @higgs.enter_text('q_puppetmaster_enterpriseconsole_hostname',"#{@puppetmaster_enterpriseconsole_hostname}")
+      @higgs.page_title_present?('Puppet Enterprise Installer')
+      @higgs.link_present?('email the CEO.')
+      @higgs.select_link("Let's get started")
+      @higgs.page_title_present?('Puppet Enterprise Installer - Choose your deployment')
+      @higgs.select_id('combined-description')
+      @higgs.enter_text('master_hostname', @hostname)
+      @higgs.enter_text('master_alt_names', 'localhost')
+      @higgs.enter_text('master_ssh_username','root')
+      @higgs.enter_text('master_ssh_key_file', '/root/.ssh/id_rsa-acceptance')
+      @higgs.enter_text('console_username','consolesuperuser@email.com')
+      @higgs.enter_text('console_password','Puppet11')
+      @higgs.enter_text('smtp_hostname',@hostname)
   end
 
   def form_fill_database_information
@@ -56,14 +64,11 @@ module Higgs
     @higgs.enter_text('q_puppet_enterpriseconsole_auth_password_confirm',"#{@yaml_data['console_information']['q_puppet_enterpriseconsole_auth_password_confirm']}")
   end
 
-  def form_fill_smtp_info
-    @higgs.enter_text('q_puppet_enterpriseconsole_smtp_host','localhost')
-    @higgs.enter_text('q_puppet_enterpriseconsole_smtp_port','25')
-    @higgs.select_id('q_puppet_enterpriseconsole_smtp_use_tls')
-    @higgs.select_id('q_puppet_enterpriseconsole_smtp_user_auth')
-    @higgs.enter_text('q_puppet_enterpriseconsole_smtp_username','console')
-    @higgs.enter_text('q_puppet_enterpriseconsole_smtp_password','Puppet11')
-    @higgs.enter_text('q_puppet_enterpriseconsole_smtp_password_confirm','Puppet11')
+  def form_fill_more_options
+    @higgs.select_id('smtp_more_options')
+    @higgs.enter_text('smtp_port','25')
+    @higgs.enter_text('smtp_username','smtpUsername')
+    @higgs.enter_text('smtp_password','Puppet11')
   end
 
 end
