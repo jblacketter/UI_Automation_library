@@ -16,16 +16,18 @@ require 'open-uri'
 
     after(:all) do
       write_test_log('Ending test run')
-      # @higgs.teardown
+      @higgs.teardown
     end
 
     describe 'Create Combined install' do
 
       it 'Enter form We need to know a few things' do
         write_test_log('Fill combined install question form')
+        verify_landing_page
+        choose_combined_installer
         form_fill_machine_information
         form_fill_more_options
-        @higgs.select_css('input.btn.btn-default')
+        click_submit_query
       end
 
       it 'Verify answer file on host' do
@@ -34,11 +36,11 @@ require 'open-uri'
 
       it 'Confirm the plan' do
         @higgs.page_title_present?('Puppet Enterprise Installer - Confirm the plan')
-        @higgs.select_link('Continue')
+        click_continue
       end
 
       it 'Deploy Now' do
-        @higgs.select_id('deploy-btn')
+        click_deploy
       end
 
     end
