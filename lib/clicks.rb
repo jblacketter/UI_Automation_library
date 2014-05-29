@@ -7,13 +7,11 @@ class Post
       end
     end
   end
-
   states :failure, :error, :success
 end
 
 
 class Console
-
   ## TODO: Experiment to build a list of test method clicks using metaprogramming
   def self.click(*args)
     args.each do |arg|
@@ -25,30 +23,26 @@ class Console
 
   click :groups, :default, :mcollective, :puppet_console, :puppet_master
 
-
 end
 
-p Console.click(:groups)
-
-
-# def click_groups
-#   @dashboard.select_link('Groups')
-# end
-# def click_default
-#   @dashboard.select_link('default')
-# end
-# def click_mcollective
-#   @dashboard.select_link('mcollective')
-# end
-# def click_no_mcollective
-#   @dashboard.select_link('no mcollective')
-# end
-# def click_puppet_console
-#   @dashboard.select_link('puppet_console')
-# end
-# def click_puppet_master
-#   @dashboard.select_link('puppet_master')
-# end
+def click_groups
+  @dashboard.select_link('Groups')
+end
+def click_default
+  @dashboard.select_link('default')
+end
+def click_mcollective
+  @dashboard.select_link('mcollective')
+end
+def click_no_mcollective
+  @dashboard.select_link('no mcollective')
+end
+def click_puppet_console
+  @dashboard.select_link('puppet_console')
+end
+def click_puppet_master
+  @dashboard.select_link('puppet_master')
+end
 
 # @dashboard.select_link('Add group')
 # @dashboard.enter_text('node_group_name','Test Group '+ '@testString')

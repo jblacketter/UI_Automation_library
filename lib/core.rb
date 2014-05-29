@@ -17,6 +17,7 @@ class Base
   end
 
   def sauce_setup(hostname)
+    ## TODO: integrate sauce run
       caps = Selenium::WebDriver::Remote::Capabilities.firefox
       caps.platform = 'OS X 10.9'
       caps.version = '28'
